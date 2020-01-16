@@ -9,6 +9,8 @@ import bcrypt
 import json
 
 
+load = 0
+
 class UserExistException(Exception):
     def __init__(self, *args):
         super().__init__(*args)
@@ -24,6 +26,22 @@ def create_user_check_exist(user):
 
 def verify_user(self, password):
     return bcrypt.checkpw(password.encode('utf-8'), str(self.password).encode('utf-8'))
+
+@routes('/user/check_exist')
+def check_exist():
+    exist = User.get_or_none(username=user["username"])
+    return {
+        'result': True if exist else False
+    }
+
+@routes('/user/login')
+def login():
+    user = User.from_json(request.data)
+    session = start_session(user)
+    return json.dumps({
+        'user': user.to_mongo().to_dict(),
+        'session': session.to_mongo().to_dict()
+    }, default=json_util.default)
 
 @routes('/user/add_user')
 def add_user():
@@ -52,5 +70,3 @@ def add_admin(admin_token):
     user = User.from_json(request.data)
     user["admin"] = True
     return create_user_check_exist(user)
-
-load = 0
