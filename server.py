@@ -1,4 +1,6 @@
 from scuto import app
+from aiohttp import web
 
 
-app.run(debug=True, threaded=True, host="127.0.0.1", port=8086)
+if __name__ == '__main__':
+    web.run_app(app, host='localhost', port=8086)

@@ -4,9 +4,6 @@ from .router import apis
 from .user import load
 from .login import load
 
-def register(app, route, api):
-    app.route(route)(api)
 
 def register_apis(app):
-    for api in apis:
-        register(app, api[0], api[1])
+    app.add_routes(apis)

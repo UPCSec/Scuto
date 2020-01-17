@@ -11,6 +11,8 @@ flask = "*"
 flask-mongoengine = "*"
 bcrypt = "*"
 docker = "*"
+aiohttp = "*"
+aiohttp-devtools = "*"
 
 [requires]
 python_version = "3.7"
