@@ -7,8 +7,6 @@ verify_ssl = true
 
 [packages]
 mongoengine = "*"
-flask = "*"
-flask-mongoengine = "*"
 bcrypt = "*"
 docker = "*"
 aiohttp = "*"
