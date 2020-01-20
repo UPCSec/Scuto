@@ -1,12 +1,11 @@
-from flask import request
 from uuid import uuid4
+from scuto.util.decorators import asynchronos
 from scuto.models import Login, Session
-from .login import login
 
 
 load = 0
 
-def start_session(user):
-    _login = login(user, 'success')
+@asynchronos
+def start_session(user, login):
     sessionid = uuid4()
-    return Session(user=user, login=_login, sessionid=sessionid).save()
+    return Session(user=user, login=login, sessionid=sessionid).save()

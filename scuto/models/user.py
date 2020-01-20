@@ -10,7 +10,7 @@ def password_validator(password):
     return
 
 class User(Document, Model):
-    username = StringField(max_length=64, required=True, unique=True, primary_key=True)
+    username = StringField(max_length=64, required=True, primary_key=True)
     password = StringField(max_length=64, required=True, validation=password_validator)
     salt = StringField(max_length=64, required=True)
     email = EmailField(required=True)
