@@ -1,4 +1,6 @@
+from scuto.util.decorators import asynchronos
 import aiohttp
+
 
 async def search_image(repo, page, page_size):
     async with aiohttp.ClientSession() as session:
