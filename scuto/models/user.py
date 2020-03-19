@@ -1,6 +1,7 @@
 from mongoengine import Document
 from mongoengine import StringField, ReferenceField, BooleanField, EmailField, ValidationError
 from .model import Model
+from .session import Session
 
 def password_validator(password):
     try:
@@ -20,3 +21,11 @@ class User(Document, Model):
     meta = {
         'strict': False
     }
+
+    @staticmethod
+    def is_admin(token):
+        session = Session.objects(sessionid=token).first()
+        if session:
+            return session.user.admin
+        else:
+            return False

@@ -12,3 +12,10 @@ class Model():
             return cls.objects.get(*args, **kwargs)
         except:
             return None
+    
+    def update_with_json(self, data):
+        """
+        Update a document object with json data
+            :param data: asd
+        """
+        pass

@@ -4,12 +4,14 @@ from .model import Model
 
 
 class Challenge(Document, Model):
-    type = StringField(choices=['coding', 'static', 'dynamic'])
+    type = StringField(choices=['Coding', 'Static', 'Dynamic'])
     title = StringField()
     description = StringField()
-    tag = ListField(StringField())
+    tags = ListField(StringField())
     file = StringField()
     image = StringField()
     ports = ListField(IntField())
     flag = ReferenceField('Flag')
-    solution = ReferenceField('Solution')
+    score = IntField()
+    blood_bonus = ListField(IntField())
+    writeup = StringField()

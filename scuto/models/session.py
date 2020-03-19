@@ -7,6 +7,7 @@ from .model import Model
 class Session(Document, Model):
     user = ReferenceField('User')
     login = ReferenceField('Login')
+    ip = StringField(regex=r'')
     start_time = DateTimeField(default=datetime.datetime.utcnow)
     sessionid = UUIDField(primary_key=True)
     meta = {

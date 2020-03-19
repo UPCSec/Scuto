@@ -1,5 +1,5 @@
 from scuto import app
-from scuto import config
+from scuto.config import config
 from aiohttp import web
 
 

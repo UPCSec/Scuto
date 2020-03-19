@@ -2,7 +2,7 @@ from scuto.util.decorators import asynchronos
 import aiohttp
 
 
-async def search_image(repo, page, page_size):
+async def search_image(repo, page=1, page_size=25, **kwargs):
     async with aiohttp.ClientSession() as session:
         url = 'https://hub.docker.com/api/content/v1/products/search'
         params = {
@@ -15,4 +15,5 @@ async def search_image(repo, page, page_size):
             'Search-Version': 'v3'
         }
         async with session.get(url, params=params, headers=headers) as resp:
-            return resp.json()
+            result = await resp.json()
+            return result
